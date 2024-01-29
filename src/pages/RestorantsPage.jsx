@@ -22,7 +22,7 @@ const RestaurantsMenu = () => {
   }, [searchParams]);
 
   return (
-    <div className="flex justify-center gap-2.5 flex-col">
+    <div className="flex justify-center gap-3 flex-col">
       {filteredRest.map((restaurants) => (
         <Restaurants key={restaurants.id} fotoRes={restaurants} />
       ))}
