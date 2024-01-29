@@ -1,13 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import RestaurantsLayout from "./layouts/RestaurantsLayout";
+import RestaurantsMenu from "./pages/RestorantsPage";
+import DetailRestaurants from "./pages/DetailRestaurants";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RestaurantsLayout />,
+    children: [
+      {
+        path: "/",
+        element: <RestaurantsMenu />,
+      },
+      {
+        path: "/details/:id",
+        element: <DetailRestaurants />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
